@@ -1,0 +1,96 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title.list}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" th:if="${lang == 'mn'}" href="/css/mongolian.css" th:href="@{/css/mongolian.css}"></link>
+    <script language="JavaScript">
+        function changeFont(type) {
+            var links = document.getElementsByTagName('a')
+            for(var i=0;i<links.length;i++) {
+                links[i].style.fontFamily = "Mongolian Title" + type
+            }
+        }
+    </script>
+</head>
+<body style="width: 50%">
+<hr>
+<a href="/artist/list?lang=mn" data-th-text="#{link.mongolian}" class="mn-a"></a>&nbsp;
+<a href="/artist/list?lang=ja" data-th-text="#{link.japanese}" class="mn-a"></a>&nbsp;
+<a href="/artist/list?lang=en" data-th-text="#{link.english}" class="mn-a"></a>&nbsp;
+
+<div th:if="${lang == 'mn'}">
+    <hr>
+    <img class="changeFont" src="/img/title1.jpg" name="title1" onClick="changeFont(1)" />&nbsp;
+    <img class="changeFont" src="/img/title2.jpg" name="title2" onClick="changeFont(2)" />&nbsp;
+    <img class="changeFont" src="/img/title3.jpg" name="title3" onClick="changeFont(3)" />&nbsp;
+    <img class="changeFont" src="/img/title4.jpg" name="title4" onClick="changeFont(4)" />
+</div>
+<hr>
+
+<table>
+    <tr>
+        <td>
+            <label th:text="#{lable.name}" class="mn-a"></label>
+        </td>
+        <td>
+            <form class="form-inline" th:action="@{/artist/list}" method="get" th:object="${searchForm}">
+                <input type="text" class="form-control mn-input" id="name" name="name" th:field="*{name}"  />&nbsp;
+                <input type="hidden" name="lang" th:value="${lang}">
+                <input type="submit" name="form" th:value="#{button.search}" class="btn btn-outline-info mn-button" />
+            </form>
+        </td>
+        <td>
+            <form th:action="@{/artist/create}" method="get">
+                <input type="submit" name="form" th:value="#{button.create}" class="btn btn-outline-success mn-button" />
+            </form>
+        </td>
+    </tr>
+</table>
+<hr>
+
+<table class="table table-sm">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col" class="mn-th"><label th:text="#{lable.id}"></label></th>
+            <th scope="col" class="mn-th"><label class="mn-label" th:text="#{lable.name}"></label></th>
+            <th scope="col" class="mn-th"><label class="mn-label" th:text="#{lable.gender}"></label></th>
+            <th scope="col" class="mn-th"><label class="mn-label" th:text="#{lable.birthday}"></label></th>
+            <th scope="col" class="mn-th"><label class="mn-label" th:text="#{lable.operation}"></label></th>
+            <th scope="col" class="mn-th"></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="artist : ${artists}">
+            <th  class="mn-th" scope="row">
+               <label th:text="${artist.id}" ></label>
+            </th>
+            <td class="mn-td">
+                <label class="mn-label" th:text="${artist.name}" ></label>
+            </td>
+            <td  class="mn-td">
+                <label class="mn-label" th:if="${artist.gender eq '1'}" th:text="#{lable.six.female}"></label>
+                <label class="mn-label" th:if="${artist.gender eq '2'}" th:text="#{lable.six.male}"></label>
+            </td>
+            <td  class="mn-td">
+                <label class="mn-label" th:text="${#temporals.format(artist.birthday,'yyyy/MM/dd')}" ></label>
+            </td>
+            <td  class="mn-td">
+                <form th:action="@{/artist/edit}" method="get">
+                    <input type="submit" name="form" th:value="#{button.edit}" class="btn btn-outline-primary mn-button-margin" />
+                    <input type="hidden" name="id" th:value="${artist.id}" />
+                </form>
+            </td>
+            <td  class="mn-td">
+                <form th:action="@{/artist/delete}" method="post">
+                    <input type="submit" name="form" th:value="#{button.delete}" class="btn btn-outline-danger mn-button-margin" />
+                    <input type="hidden" name="id" th:value="${artist.id}" />
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>

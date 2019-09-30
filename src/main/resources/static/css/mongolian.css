@@ -1,0 +1,64 @@
+@font-face {
+    font-family:'Mongolian Title1';
+    src:url('../font/mnglwhiteotf.ttf') format('truetype');
+}
+@font-face {
+    font-family:'Mongolian Title2';
+    src:url('../font/mnglwritingotf.ttf') format('truetype');
+}
+@font-face {
+    font-family:'Mongolian Title3';
+    src:url('../font/mngltitleotf.ttf') format('truetype');
+}
+@font-face {
+    font-family:'Mongolian Title4';
+    src:url('../font/mnglartotf.ttf') format('truetype');
+}
+
+.mn-a, .mn-label, .mn-td {
+    font-family: "Mongolian Title1";
+    text-decoration: none;
+    writing-mode: tb-rl;
+    -ms-writing-mode: tb-rl;
+}
+
+.mn-td, .mn-th {
+    vertical-align: top;
+    text-align: center;
+    width: 18px;
+}
+
+.mn-input {
+    font-family: "Mongolian Title1";
+    writing-mode: tb-rl;
+    -ms-writing-mode: tb-rl;
+    width: 70px;
+}
+
+.mn-button {
+    transform: rotate(90deg);
+    font-family: "Mongolian Title1";
+    text-decoration: none;
+    width: 65px;
+}
+.mn-button-margin {
+    transform: rotate(90deg);
+    font-family: "Mongolian Title1";
+    text-decoration: none;
+    width: 65px;
+    margin-top: 15px;
+}
+
+.table thead th, a {
+    vertical-align: top;
+}
+
+.changeFont{
+    border: 2px #00aeff solid;
+    cursor: pointer;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    width: 37px;
+    height: 37px;
+}

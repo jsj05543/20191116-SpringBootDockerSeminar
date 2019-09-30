@@ -1,0 +1,55 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{title.edit}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <form th:action="@{/artist/edit}" method="post" th:object="${artistForm}" class="form-horizontal">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label" th:text="#{lable.name}"></label>
+            <div class="col-sm-10">
+                <input type="text" id="name" name="name" th:field="*{name}" class="form-control" th:errorclass="error-input" />
+                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2" th:text="#{lable.gender}"></label>
+            <div class="col-sm-10">
+                <div class="radio" th:each="gender : ${genderItems}">
+                    <input type="radio" th:value="${gender.key}" th:field="*{gender}" />
+                    <label th:for="${#ids.prev('gender')}" th:text="#{${gender.value}}"></label>
+                </div>
+                <span th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="birthday" class="col-sm-2 control-label" th:text="#{lable.birthday}"></label>
+            <div class="col-sm-10">
+                <input type="date" id="birthday" name="birthday" th:field="*{birthday}" placeholder="yyyy/mm/dd" class="form-control" th:errorclass="error-input"/>
+                <span th:if="${#fields.hasErrors('birthday')}" th:errors="*{birthday}" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label" th:text="#{lable.updateTime}"></label>
+            <div class="col-sm-10">
+                    <label th:text="*{#temporals.format(updateTime,'yyyy/MM/dd hh:mm:ss')}" class="form-control"></label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <input th:type="submit" th:value="#{button.edit}"  class="btn btn-outline-primary" />
+                <a href="/artist/top" th:text="#{button.back}" class="btn btn-outline-info "></a>
+            </div>
+        </div>
+
+        <input type="hidden" th:field="*{id}" />
+    </form>
+</body>
+</html>

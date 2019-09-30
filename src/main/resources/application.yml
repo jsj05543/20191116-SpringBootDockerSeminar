@@ -1,0 +1,41 @@
+spring:
+  profiles:
+    active: localhost
+
+---
+spring:
+  profiles: localhost
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:13306/artist
+    username: artist
+    password: artist
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  messages:
+    basename: i18n/messages
+  data:
+    web:
+      base-path: /artist
+
+---
+spring:
+  profiles: docker
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db/artist
+    username: artist
+    password: artist
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  messages:
+    basename: i18n/messages
+  data:
+    web:
+      base-path: /artist
