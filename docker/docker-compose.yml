@@ -15,28 +15,20 @@ services:
       MYSQL_DATABASE: artist
       MYSQL_USER: artist
       MYSQL_PASSWORD: artist
-    networks:
-      - default
 
   app:
     build:
       context: ./app
       dockerfile: ./Dockerfile
-    image: artist-app:0.0.1
-    container_name: artist-app
+    image: artist-app-manual:0.0.1
+    container_name: artist-app-manual
     depends_on:
       - db
     ports:
       - "18080:8080"
     environment:
       JAR_TARGET: artist-0.0.1-SNAPSHOT.jar
-    networks:
-      - default
 
 volumes:
   db:
     driver: local
-
-networks:
-  default:
-    name: artist-network

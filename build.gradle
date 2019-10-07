@@ -41,7 +41,7 @@ jib {
 		image 'adoptopenjdk/openjdk12:slim'
 	}
 	to {
-		tags = ['latest']
-		image = 'artist-app'
+		tags = ['0.0.1']
+		image = 'artist-app-jib'
 	}
 }
