@@ -32,3 +32,8 @@ TODO
 
 ## 3. 動作確認
 ブラウザから http://localhost:18080/artist/list にアクセスし、画面が表示されれば成功。
+
+## 4. そのた便利コマンド
+<pre>
+docker run --name artist-app -d -p 18080:8080 --net=docker_default  artist-app:latest
+</pre>

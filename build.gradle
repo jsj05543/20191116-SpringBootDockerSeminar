@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.1.8.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 	id 'java'
+	id 'com.google.cloud.tools.jib' version '1.6.1'
 }
 
 group = 'com.mit'
@@ -27,4 +28,20 @@ dependencies {
 	runtimeOnly 'mysql:mysql-connector-java'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+jib {
+	container {
+		jvmFlags = [
+				'-Dspring.profiles.active=docker'
+		]
+		mainClass 'com.mit.artist.ArtistApplication'
+	}
+	from {
+		image 'adoptopenjdk/openjdk12:slim'
+	}
+	to {
+		tags = ['latest']
+		image = 'artist-app'
+	}
 }
