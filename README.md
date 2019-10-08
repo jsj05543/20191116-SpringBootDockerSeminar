@@ -36,4 +36,7 @@ TODO
 ## 4. そのた便利コマンド
 <pre>
 docker run --name artist-app-jib -d -p 18081:8080 --net=docker_default  artist-app-jib:0.0.1
+docker tag artist-db:0.0.1 yuntumg/artist-db:0.0.1
+docker push yuntumg/artist-db:0.0.1
+docker pull yuntumg/artist-db:0.0.1
 </pre>
