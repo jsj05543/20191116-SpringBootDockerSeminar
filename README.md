@@ -5,7 +5,6 @@
 1. Docker for Windows/Mac、或いは Docker Toolbox をインストール。(必須)
 2. Java 12 をインストール。(ローカルで jar をビルドする場合必須)
 3. Eclipseのインストール。(IDE を使ってにローカルで jar をビルドする場合必須)
-4. Gradleのインストール。(IDE を使わずにローカルで jar をビルドする場合必須)
 </pre>
 
 ## 2. 起動手順
@@ -13,11 +12,7 @@
 <pre>
 TODO
 </pre>
-### 2.2 Docker image を自分で作成し、動かす場合(Eclipse不使用)
-<pre>
-TODO
-</pre>
-### 2.3 Docker image を自分で作成し、動かす場合(Eclipse使用)
+### 2.2 Docker image を自分で作成し、動かす場合(Eclipse使用)
 <pre>
 1. ソースコードを gitHub から clone or zip でダウンロード。
         git clone https://github.com/yuntumg/20191116-SpringBootDockerSeminar.git
