@@ -3,8 +3,8 @@
 ## 1. 事前準備
 <pre>
 1. Docker for Windows/Mac、或いは Docker Toolbox をインストール。(必須)
-2. Java 12 をインストール。(ローカルで jar をビルドする場合必須)
-3. Eclipseのインストール。(IDE を使ってにローカルで jar をビルドする場合必須)
+2. Java 12 をインストール。(自分で image を作成する場合)
+3. Eclipseのインストール。(自分で image を作成する場合)
 </pre>
 
 ## 2. 起動手順
