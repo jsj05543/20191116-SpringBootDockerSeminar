@@ -3,8 +3,9 @@
 ## 1. 事前準備
 <pre>
 1. Docker for Windows/Mac、或いは Docker Toolbox をインストール。(必須)
-2. Java 12 をインストール。(自分で image を作成する場合)
-3. Eclipse をインストール。(自分で image を作成する場合)
+2. gitクライアントをインストール。(git コマンドを使う場合)
+3. Java 12 をインストール。(自分で image を作成する場合)
+4. Eclipse をインストール。(自分で image を作成する場合)
 </pre>
 
 ## 2. 起動手順
