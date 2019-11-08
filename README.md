@@ -13,7 +13,15 @@
 1. ソースコードを gitHub から clone or zip でダウンロード。
         git clone https://github.com/yuntumg/20191116-SpringBootDockerSeminar.git
         
-2. XXX
+2. 20191116-SpringBootDockerSeminar ディレクトリ配下に移動し、以下のコマンドを実行する。
+        docker-compose up -d db
+        docker-compose up -d app1   # dbが完全に起動した後実行
+        docker-compose up -d app2   # dbが完全に起動した後実行
+        
+3. 動作確認
+        ブラウザから下記の URL にアクセスし、画面が表示されれば成功。
+         http://localhost:18080/artist/list
+         http://localhost:18081/artist/list
 </pre>
 
 ### 2.2 Docker image を自分で作成し、動かす場合(Eclipse使用)
@@ -34,15 +42,15 @@
         4.1. Gradle Tasks ビューから build -> build を実行
         4.2. build/libs 配下に「artist-0.0.1-SNAPSHOT.jar」ファイルが作られる。
         ※もし複数版の jdk をインストールしている場合、build -> build を実行すると以下のエラーになるかもしれません。
-        　「Could not target platform: 'Java SE 12' using tool chain: 'JDK 8 (1.8)'.」
-        　この場合は、Windows -> Preferences -> Gradle -> Java Home に JDK12 を指定してください。
+          「Could not target platform: 'Java SE 12' using tool chain: 'JDK 8 (1.8)'.」
+          この場合は、Windows -> Preferences -> Gradle -> Java Home に JDK12 を指定してください。
          
 5. 4で生成の jar ファイルを ./build/libs の配下から ./docker/app 配下にコピーする。
 
 6. ./docker 配下に移動して、以下のコマンドを順次実行。
         docker-compose build        # イメージのダウンロードは結構時間かかる
-        docker-compose up -d　db
-        docker-compose up -d　app   # dbが完全に起動した後実行
+        docker-compose up -d db
+        docker-compose up -d app   # dbが完全に起動した後実行
 
 7. 動作確認
         ブラウザから http://localhost:18080/artist/list にアクセスし、画面が表示されれば成功。
