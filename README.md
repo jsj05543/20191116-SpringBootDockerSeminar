@@ -36,7 +36,7 @@ TODO
 5. 4で生成の jar ファイルを ./build/libs の配下から ./docker/app 配下にコピーする。
 
 6. ./docker 配下に移動して、以下のコマンドを順次実行。
-        docker-compose build
+        docker-compose build        # イメージのダウンロードは結構時間かかる
         docker-compose up -d　db
         docker-compose up -d　app   # dbが完全に起動した後実行
 </pre>
