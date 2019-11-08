@@ -10,8 +10,12 @@
 ## 2. 起動手順
 ### 2.1 Docker image をダウンロードし、動かす場合
 <pre>
-TODO
+1. ソースコードを gitHub から clone or zip でダウンロード。
+        git clone https://github.com/yuntumg/20191116-SpringBootDockerSeminar.git
+        
+2. XXX
 </pre>
+
 ### 2.2 Docker image を自分で作成し、動かす場合(Eclipse使用)
 <pre>
 1. ソースコードを gitHub から clone or zip でダウンロード。
@@ -39,12 +43,12 @@ TODO
         docker-compose build        # イメージのダウンロードは結構時間かかる
         docker-compose up -d　db
         docker-compose up -d　app   # dbが完全に起動した後実行
+
+7. 動作確認
+        ブラウザから http://localhost:18080/artist/list にアクセスし、画面が表示されれば成功。
 </pre>
 
-## 3. 動作確認
-ブラウザから http://localhost:18080/artist/list にアクセスし、画面が表示されれば成功。
-
-## 4. そのた便利コマンド
+## 3. そのた便利コマンド
 <pre>
 docker run --name artist-app-jib -d -p 18081:8080 --net=docker_default  artist-app-jib:0.0.1
 docker tag artist-db:0.0.1 yuntumg/artist-db:0.0.1
